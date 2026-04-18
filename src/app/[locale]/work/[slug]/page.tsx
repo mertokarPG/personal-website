@@ -74,7 +74,7 @@ export default function WorkDetailPage({
   const d = dict.detail;
 
   return (
-    <div className="relative z-[2] px-6 pb-20 pt-12">
+    <div className="relative z-[2] px-4 pb-20 pt-8 md:px-6 md:pt-12">
       <Breadcrumb
         trail={[
           ["~", localePath(locale, "/")],
@@ -83,34 +83,33 @@ export default function WorkDetailPage({
         ]}
       />
 
-      <div className="mb-5 grid grid-cols-[120px_1fr_200px] items-baseline gap-7">
+      <div className="mb-5 grid grid-cols-[auto_1fr] items-baseline gap-x-4 gap-y-2 md:grid-cols-[120px_1fr_200px] md:gap-7">
         <div
-          className="text-[60px] font-bold text-amber"
+          className="text-[36px] font-bold leading-none text-amber md:text-[60px]"
           style={{ letterSpacing: "-2px" }}
         >
           [{w.no}]
         </div>
         <h1
-          className="m-0 font-bold uppercase"
+          className="m-0 font-bold uppercase tracking-[-1px] md:tracking-[-2px]"
           style={{
-            fontSize: "clamp(36px, 5vw, 64px)",
-            lineHeight: 1,
-            letterSpacing: "-2px",
+            fontSize: "clamp(24px, 6vw, 64px)",
+            lineHeight: 1.05,
           }}
         >
           {w.title}
         </h1>
-        <div className="text-right text-[12px] tracking-[1px] text-muted">
+        <div className="col-span-2 text-[11px] tracking-[1px] text-muted md:col-span-1 md:text-right md:text-[12px]">
           {w.year}
         </div>
       </div>
 
-      <div className="mb-8 max-w-[760px] text-[20px] leading-[1.5] text-fg">
+      <div className="mb-8 max-w-[760px] text-[16px] leading-[1.5] text-fg md:text-[20px]">
         <span className="text-green">&gt;</span> {w.kicker}.
       </div>
 
       {/* Meta strip */}
-      <div className="mb-10 grid grid-cols-4 border border-rule bg-bg2">
+      <div className="mb-10 grid grid-cols-2 border border-rule bg-bg2 md:grid-cols-4">
         {(
           [
             [d.role, w.role],
@@ -118,17 +117,29 @@ export default function WorkDetailPage({
             [d.stack, w.stack.join(" · ")],
             [d.outcome, w.result],
           ] as const
-        ).map(([k, v], i) => (
-          <div
-            key={k}
-            className={`p-5 ${i < 3 ? "border-r border-rule" : ""}`}
-          >
-            <div className="mb-1.5 text-[10px] tracking-[2px] text-amber">
-              {k}
+        ).map(([k, v], i) => {
+          const mobileRight = i % 2 === 0;
+          const mobileBottom = i < 2;
+          const desktopRight = i < 3;
+          const borders = [
+            mobileRight ? "border-r border-rule" : "",
+            mobileBottom ? "border-b border-rule md:border-b-0" : "",
+            desktopRight && !mobileRight ? "md:border-r md:border-rule" : "",
+            !desktopRight && mobileRight ? "md:border-r-0" : "",
+          ]
+            .filter(Boolean)
+            .join(" ");
+          return (
+            <div key={k} className={`p-4 md:p-5 ${borders}`}>
+              <div className="mb-1.5 text-[10px] tracking-[2px] text-amber">
+                {k}
+              </div>
+              <div className="text-[12px] leading-[1.5] text-fg md:text-[13px]">
+                {v}
+              </div>
             </div>
-            <div className="text-[13px] leading-[1.5] text-fg">{v}</div>
-          </div>
-        ))}
+          );
+        })}
       </div>
 
       {/* Placeholder image well */}
@@ -149,12 +160,12 @@ export default function WorkDetailPage({
         </div>
       </div>
 
-      <div className="mb-12 grid grid-cols-[1fr_320px] gap-14">
-        <div>
+      <div className="mb-12 grid grid-cols-1 gap-10 md:grid-cols-[1fr_320px] md:gap-14">
+        <div className="min-w-0">
           <MDXRemote source={w.body} components={mdxComponents} />
 
           <Head small>§ {d.learned}</Head>
-          <blockquote className="m-0 border-l-[3px] border-amber bg-bg2 px-5 py-4 text-[18px] italic leading-[1.5] text-fg">
+          <blockquote className="m-0 border-l-[3px] border-amber bg-bg2 px-4 py-4 text-[15px] italic leading-[1.5] text-fg md:px-5 md:text-[18px]">
             &ldquo;{w.learned}&rdquo;
           </blockquote>
         </div>
@@ -193,7 +204,7 @@ export default function WorkDetailPage({
       </div>
 
       {/* prev / next */}
-      <div className="mt-6 grid grid-cols-2 gap-4">
+      <div className="mt-6 grid grid-cols-1 gap-3 md:grid-cols-2 md:gap-4">
         {prev ? (
           <Link
             href={localePath(locale, `/work/${prev.slug}`)}

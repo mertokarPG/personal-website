@@ -29,7 +29,7 @@ export default function NowPage({
   });
 
   return (
-    <div className="relative z-[2] px-6 pb-20 pt-12">
+    <div className="relative z-[2] px-4 pb-20 pt-8 md:px-6 md:pt-12">
       <Breadcrumb
         trail={[
           ["~", localePath(locale, "/")],
@@ -37,25 +37,24 @@ export default function NowPage({
         ]}
       />
       <h1
-        className="m-0 mt-4 font-black uppercase"
+        className="m-0 mt-4 font-black uppercase tracking-[-1.5px] md:tracking-[-3px]"
         style={{
-          fontSize: "clamp(48px, 8vw, 96px)",
-          letterSpacing: "-3px",
+          fontSize: "clamp(36px, 9vw, 96px)",
           lineHeight: 0.95,
         }}
       >
         {dict.now.title}
         <span className="text-green">{dict.now.suffix}</span>
       </h1>
-      <p className="my-3 mb-7 max-w-[640px] text-[15px] leading-[1.6] text-fg">
+      <p className="my-3 mb-7 max-w-[640px] text-[14px] leading-[1.6] text-fg md:text-[15px]">
         {dict.now.intro}{" "}
         <code className="text-amber">{dict.now.introCode}</code>.
       </p>
 
       <NowTable dict={dict} />
 
-      <div className="mt-12 grid grid-cols-2 gap-6">
-        <div className="border border-rule bg-bg2 p-6">
+      <div className="mt-10 grid grid-cols-1 gap-5 md:mt-12 md:grid-cols-2 md:gap-6">
+        <div className="border border-rule bg-bg2 p-5 md:p-6">
           <Head small>§ {dict.now.thinkingTitle}</Head>
           <ul className="m-0 list-none p-0 text-[14px] leading-[1.9]">
             {dict.now.thinking.map((t, i) => (
@@ -66,7 +65,7 @@ export default function NowPage({
             ))}
           </ul>
         </div>
-        <div className="border border-rule bg-bg2 p-6">
+        <div className="border border-rule bg-bg2 p-5 md:p-6">
           <Head small>§ {dict.now.stackTitle}</Head>
           <div className="flex flex-wrap gap-2">
             {MERT.stack.map((s) => (

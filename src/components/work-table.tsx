@@ -5,11 +5,11 @@ import type { EnDict } from "@/lib/dict/en";
 
 export function TableHead({ dict }: { dict: EnDict }) {
   return (
-    <div className="grid grid-cols-[60px_120px_1fr_180px_60px] gap-4 border-b border-rule bg-bg px-5 py-[10px] text-[10px] uppercase tracking-[2px] text-muted">
+    <div className="grid grid-cols-[40px_1fr_24px] gap-3 border-b border-rule bg-bg px-4 py-[10px] text-[10px] uppercase tracking-[2px] text-muted md:grid-cols-[60px_120px_1fr_180px_60px] md:gap-4 md:px-5">
       <div>{dict.work.tableHead.no}</div>
-      <div>{dict.work.tableHead.when}</div>
+      <div className="hidden md:block">{dict.work.tableHead.when}</div>
       <div>{dict.work.tableHead.entry}</div>
-      <div>{dict.work.tableHead.result}</div>
+      <div className="hidden md:block">{dict.work.tableHead.result}</div>
       <div className="text-right">→</div>
     </div>
   );

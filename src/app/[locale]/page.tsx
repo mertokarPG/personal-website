@@ -23,28 +23,27 @@ export default function HomePage({
   return (
     <>
       {/* HERO */}
-      <div className="relative z-[2] px-6 pb-6 pt-12">
-        <div className="relative border border-rule bg-bg2 px-9 py-8">
-          <div className="absolute inset-x-0 top-0 flex h-7 items-center justify-between border-b border-rule bg-bg px-3 text-[10px] tracking-[1px] text-muted">
-            <span>{h.windowTitle}</span>
-            <span>{h.readonly}</span>
+      <div className="relative z-[2] px-4 pb-6 pt-8 md:px-6 md:pt-12">
+        <div className="relative border border-rule bg-bg2 px-5 py-6 md:px-9 md:py-8">
+          <div className="absolute inset-x-0 top-0 flex h-7 items-center justify-between gap-3 overflow-hidden border-b border-rule bg-bg px-3 text-[9px] tracking-[1px] text-muted md:text-[10px]">
+            <span className="truncate">{h.windowTitle}</span>
+            <span className="shrink-0">{h.readonly}</span>
           </div>
           <div className="pt-[30px]">
             <div className="mb-[14px] text-[11px] tracking-[2px] text-amber">
               {h.bootLine}
             </div>
             <h1
-              className="m-0 font-mono font-bold"
+              className="m-0 font-mono font-bold tracking-[-1.5px] md:tracking-[-3px]"
               style={{
-                fontSize: "clamp(44px, 8vw, 88px)",
+                fontSize: "clamp(32px, 10vw, 88px)",
                 lineHeight: 0.95,
-                letterSpacing: "-3px",
               }}
             >
               MERT_OKAR
               <span className="text-amber animate-sys-blink">_</span>
             </h1>
-            <div className="mt-7 grid grid-cols-[2fr_1fr] gap-10">
+            <div className="mt-6 grid grid-cols-1 gap-6 md:mt-7 md:grid-cols-[2fr_1fr] md:gap-10">
               <div className="text-[15px] leading-[1.65]">
                 <div className="mb-2 text-[11px] text-green">
                   {h.bioComment}
@@ -84,7 +83,7 @@ export default function HomePage({
       <Ticker />
 
       {/* work preview */}
-      <div className="relative z-[2] px-6 pb-6 pt-10">
+      <div className="relative z-[2] px-4 pb-6 pt-10 md:px-6">
         <SectionHead
           num="02"
           title={h.sections.work}
@@ -95,7 +94,7 @@ export default function HomePage({
       </div>
 
       {/* now preview */}
-      <div className="relative z-[2] px-6 pb-6 pt-10">
+      <div className="relative z-[2] px-4 pb-6 pt-10 md:px-6">
         <SectionHead
           num="03"
           title={h.sections.now}
@@ -108,19 +107,19 @@ export default function HomePage({
       <AsciiDivider />
 
       {/* contact preview */}
-      <div className="relative z-[2] px-6 pb-20 pt-10">
+      <div className="relative z-[2] px-4 pb-20 pt-10 md:px-6">
         <SectionHead
           num="04"
           title={h.sections.contact}
           right={h.sections.contactRight}
           rightTo={localePath(locale, "/contact")}
         />
-        <div className="grid grid-cols-2 gap-6 border border-rule bg-bg2 p-6">
-          <div>
+        <div className="grid grid-cols-1 gap-6 border border-rule bg-bg2 p-5 md:grid-cols-2 md:p-6">
+          <div className="min-w-0">
             <div className="mb-3 text-[11px] tracking-[2px] text-muted">
               {h.contactPreview.whoami}
             </div>
-            <pre className="m-0 whitespace-pre-wrap font-mono text-[13px] leading-[1.8] text-fg">
+            <pre className="m-0 overflow-x-auto whitespace-pre-wrap break-words font-mono text-[12px] leading-[1.8] text-fg md:text-[13px]">
               <span className="text-amber">email</span>:    {"  "}
               <a href={`mailto:${MERT.email}`} className="text-green">
                 {MERT.email}
@@ -138,11 +137,11 @@ export default function HomePage({
               :   <UptimeInline />
             </pre>
           </div>
-          <div className="border-l border-rule pl-6">
+          <div className="border-t border-rule pt-5 md:border-l md:border-t-0 md:pl-6 md:pt-0">
             <div className="mb-3 text-[11px] tracking-[2px] text-muted">
               {h.contactPreview.reasonsTitle}
             </div>
-            <ul className="m-0 list-none p-0 text-[14px] leading-[1.9]">
+            <ul className="m-0 list-none p-0 text-[13px] leading-[1.9] md:text-[14px]">
               {h.contactPreview.reasons.map((r, i) => (
                 <li key={i} className="relative pl-[18px]">
                   <span className="absolute left-0 text-amber">▸</span>

@@ -15,7 +15,7 @@ export function ContactYaml({ dict }: { dict: EnDict }) {
   };
 
   return (
-    <pre className="m-0 whitespace-pre-wrap font-mono text-[13px] leading-[1.8] text-fg">
+    <pre className="m-0 whitespace-pre-wrap break-words font-mono text-[12px] leading-[1.8] text-fg md:text-[13px]">
       <span className="text-amber">{y.email}</span>:    {"  "}
       <button
         onClick={copy}

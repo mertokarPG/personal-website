@@ -27,7 +27,7 @@ export default function ContactPage({
   const c = dict.contact;
 
   return (
-    <div className="relative z-[2] px-6 pb-20 pt-12">
+    <div className="relative z-[2] px-4 pb-20 pt-8 md:px-6 md:pt-12">
       <Breadcrumb
         trail={[
           ["~", localePath(locale, "/")],
@@ -36,29 +36,28 @@ export default function ContactPage({
       />
 
       <h1
-        className="my-5 mb-10 font-black uppercase"
+        className="my-5 mb-8 font-black uppercase tracking-[-2px] md:mb-10 md:tracking-[-6px]"
         style={{
-          fontSize: "clamp(64px, 12vw, 160px)",
-          letterSpacing: "-6px",
-          lineHeight: 0.85,
+          fontSize: "clamp(42px, 13vw, 160px)",
+          lineHeight: 0.9,
         }}
       >
         {c.heading}
         <span className="text-amber animate-sys-blink">_</span>
       </h1>
 
-      <div className="grid grid-cols-2 gap-6 border border-rule bg-bg2 p-6">
-        <div>
+      <div className="grid grid-cols-1 gap-6 border border-rule bg-bg2 p-5 md:grid-cols-2 md:p-6">
+        <div className="min-w-0">
           <div className="mb-3 text-[11px] tracking-[2px] text-muted">
             {c.yamlTitle}
           </div>
           <ContactYaml dict={dict} />
         </div>
-        <div className="border-l border-rule pl-6">
+        <div className="border-t border-rule pt-5 md:border-l md:border-t-0 md:pl-6 md:pt-0">
           <div className="mb-3 text-[11px] tracking-[2px] text-muted">
             {c.reasonsTitle}
           </div>
-          <ul className="m-0 list-none p-0 text-[14px] leading-[1.9]">
+          <ul className="m-0 list-none p-0 text-[13px] leading-[1.9] md:text-[14px]">
             {c.reasons.map((r, i) => (
               <li key={i} className="relative mb-1 pl-[18px]">
                 <span
@@ -87,7 +86,7 @@ export default function ContactPage({
         </div>
       </div>
 
-      <div className="mt-8 flex justify-between text-[10px] tracking-[2px] text-muted">
+      <div className="mt-8 flex flex-wrap justify-between gap-2 text-[9px] tracking-[2px] text-muted md:text-[10px]">
         <span>{c.footer.eot}</span>
         <span>
           BUILD {new Date().getFullYear()}.042 · {c.footer.build}

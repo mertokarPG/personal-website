@@ -37,21 +37,21 @@ export function StatusBar({
 
   return (
     <div
-      className="sticky top-0 z-30 flex justify-between border-b border-rule bg-bg2 px-6 py-2 text-[11px] text-muted"
+      className="sticky top-0 z-30 flex justify-between gap-3 border-b border-rule bg-bg2 px-4 py-2 text-[10px] text-muted md:px-6 md:text-[11px]"
       style={{ letterSpacing: "0.5px" }}
     >
-      <div className="flex gap-5">
-        <span>
+      <div className="flex min-w-0 items-center gap-3 md:gap-5">
+        <span className="whitespace-nowrap">
           <span className="text-green">●</span> {dict.status.linkOk}
         </span>
-        <span>OKAR.MERT</span>
-        <span className="text-amber">~{route}</span>
+        <span className="hidden md:inline">OKAR.MERT</span>
+        <span className="truncate text-amber">~{route}</span>
       </div>
-      <div className="flex gap-5">
-        <span>
+      <div className="flex shrink-0 items-center gap-3 md:gap-5">
+        <span className="whitespace-nowrap">
           {dict.status.up} {hh}:{mm}:{ss}
         </span>
-        <span className="text-amber">UTC {clock}</span>
+        <span className="hidden text-amber md:inline">UTC {clock}</span>
         <LocaleSwitcher locale={locale} dict={dict} />
       </div>
     </div>
