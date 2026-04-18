@@ -1,0 +1,36 @@
+---
+slug: buffer-forecast
+no: "02"
+year: "2022"
+title: Hat Entegrasyonu & Buffer Tahminleme
+kicker: Gerçek zamanlı starvation tespiti
+desc: Üç üretim hattının inşaattan devreye almaya kadarki entegrasyonuna liderlik ettim. Üstüne, starvation kayıplarını yaşanmadan önce tahmin eden gerçek zamanlı bir buffer izleme ve tahminleme aracı kurdum.
+tags:
+  - Python
+  - Power BI
+  - PLC
+result: −%2 starvation kaybı
+role: Mühendislik proje yöneticisi + araç geliştirici
+team: 3 hat, ~15 mühendis, 4 vardiya
+stack:
+  - Python
+  - Power BI
+  - Proficy Historian
+  - OPC UA
+impact:
+  - ["Starvation kayıpları", "−%2.0"]
+  - ["Devreye alma performansı", "Önceki rollout'lara kıyasla sınıfının en iyisi"]
+  - ["Operatör güveni", "Her vardiya devrinde kullanılıyor"]
+learned: Operatörün güvendiği 30 saniyelik bir tahmin, güvenmediği 30 dakikalık tahmini her zaman yener.
+---
+
+## Sorun
+
+Üç yeni hat, hepsi birbirini besleyen farklı buffer'larla. Operatörler mevcut seviyeyi görebiliyordu ama gidişatı değil — bir buffer boşaldığında, alt hat çoktan starvation'a girmiş oluyordu.
+
+## Yaklaşım
+
+1. Üç hattaki her buffer'ı etiketledim. Historian verisini Python'a çektim.
+2. Kısa ufuklu tahmin (30–90 sn) basit rate-of-change ile; daha fazlası latency'e kurban gidiyordu.
+3. Power BI dashboard'u, trafik ışığı tahmin kartlarıyla — operatörün istediği regresyon katsayısı değil, bir bakışta okunabilirlik.
+4. Alarm eşiklerini vardiya liderleriyle iterasyonla ayarladım; az ama doğru alarm, çok ama gürültülü alarmı yener.

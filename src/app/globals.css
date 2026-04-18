@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #0d0d0c;
+  --bg2: #151513;
+  --bg3: #1e1e1c;
+  --fg: #e8e4d7;
+  --muted: #6e6a5c;
+  --amber: #f5a524;
+  --green: #8fb339;
+  --red: #d0361c;
+  --grid: rgba(232, 228, 215, 0.05);
+  --rule: rgba(232, 228, 215, 0.18);
+  --rule-strong: rgba(232, 228, 215, 0.3);
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  overflow-x: hidden;
+}
+
+body {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  color: var(--fg);
+  font-size: 13px;
+  line-height: 1.55;
+  min-height: 100vh;
+  background-image: linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(245, 165, 36, 0.4);
+  border-radius: 0;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg2);
+}
+
+a {
+  color: inherit;
+}
+
+pre {
+  font-family: inherit;
+}
+
+button {
+  font-family: inherit;
+}
+
+::selection {
+  background: var(--amber);
+  color: var(--bg);
+}

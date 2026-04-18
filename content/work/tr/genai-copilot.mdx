@@ -1,0 +1,35 @@
+---
+slug: genai-copilot
+no: "04"
+year: "2024 —"
+title: GenAI Operasyon Copilot
+kicker: Copilot Studio + saha verisi
+desc: Operatörler ve MAC ekipleri için MVP ajanı. Control Tower API'leri ile entegre; hat/PO bilgisini düz İngilizceyle anında getiriyor. Saha verisi üstünde GenAI için tekrar kullanılabilir bir şablon.
+tags:
+  - Copilot Studio
+  - API
+  - GenAI
+result: 2 kardeş sahada yeniden kullanıldı
+role: Teknik lider, şablon yazarı
+team: 1 geliştirici + ben, vendor desteği
+stack:
+  - Microsoft Copilot Studio
+  - Control Tower REST API
+  - Azure AD
+impact:
+  - ["Şablonu uygulayan kardeş saha", "2"]
+  - ["Cevap doğruluğu (tool-grounded)", ">%95"]
+  - ["İlk faydalı cevaba ulaşma süresi", "Saniyeler"]
+learned: Endüstride GenAI, %10 model %90 hangi soruya cevap vermenin güvenli olduğunu bilmek.
+---
+
+## Sorun
+
+Herkes fabrikada GenAI istiyordu. Kimsenin, LLM'i bir yükümlülüğe çevirmeden saha verisine güvenli ve tekrarlanabilir şekilde bağlayacak bir yolu yoktu.
+
+## Yaklaşım
+
+1. Ajanı Control Tower'ın salt-okunur API'sine bağladım — doğrudan PLC ya da MES erişimi yok.
+2. Prompt'ları dar, doğrulanabilir sorulara çektim: 'Hat 3 ne üretiyor?', 'PO 12345 ne zaman biter?'.
+3. Hallucination bütçesi: ajan bir tool-call cevabı bulamıyorsa, öyle söyler. Vibe'a dayalı fabrika tavsiyesi yok.
+4. Şablonu, kardeş sahalar entegrasyonu kopyalayabilsin diye belgeledim — kodu değil, yaklaşımı.

@@ -1,0 +1,36 @@
+---
+slug: buffer-forecast
+no: "02"
+year: "2022"
+title: Line Integration & Buffer Forecasting
+kicker: Real-time starvation detection
+desc: Led the integration of three production lines from construction through startup. Built a real-time buffer monitoring and forecasting tool on top to predict starvation losses before they happen.
+tags:
+  - Python
+  - Power BI
+  - PLC
+result: −2% starvation losses
+role: Engineering project manager + tool builder
+team: 3 lines, ~15 engineers, 4 shift crews
+stack:
+  - Python
+  - Power BI
+  - Proficy Historian
+  - OPC UA
+impact:
+  - ["Starvation losses", "−2.0%"]
+  - ["Startup performance", "Best-in-class vs prior rollouts"]
+  - ["Operator trust", "Used on every shift handover"]
+learned: A 30-second forecast that an operator trusts beats a 30-minute forecast they don't.
+---
+
+## Problem
+
+Three new lines, all with different buffers feeding each other. Operators could see current levels but not trajectory — by the time a buffer was empty, the downstream line was already starved.
+
+## Approach
+
+1. Tagged every buffer across all three lines. Pulled historian data into Python.
+2. Short-horizon forecast (30–90s) using simple rate-of-change; anything fancier lost to latency.
+3. Power BI dashboard with traffic-light forecast tiles — operators need glance-ability, not regression coefficients.
+4. Iterated on alert thresholds with shift leads; fewer, truer alerts beat more, noisier ones.

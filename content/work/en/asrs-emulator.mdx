@@ -1,0 +1,36 @@
+---
+slug: asrs-emulator
+no: "03"
+year: "2021—2023"
+title: ASRS Emulation Environment
+kicker: Zero-downtime change management
+desc: Designed a full emulation environment mirroring production — VMs, databases, four live PLCs — so vendor updates could be validated offline before touching the line.
+tags:
+  - PLC
+  - DevOps
+  - IT/OT
+result: 3.5% → 0.5% operational losses
+role: Engineering Technology Owner
+team: 2 vendor partners, site IT, operations
+stack:
+  - Siemens PLCs
+  - VMware
+  - SQL Server
+  - Secure vendor tunnel
+impact:
+  - ["Operational losses", "3.5% → 0.5%"]
+  - ["Line downtime from updates", "Zero"]
+  - ["Security posture", "Step-change improvement"]
+learned: You don't buy 'zero downtime' with uptime — you buy it with a rehearsal room.
+---
+
+## Problem
+
+The ASRS ran 24/7 and had never had a safe path to test vendor software changes. Every update was a live-fire exercise. Operational losses were creeping up because no one wanted to touch anything.
+
+## Approach
+
+1. Inventoried every component: VMs, DBs, PLCs, HMIs. Cloned them into an isolated network segment.
+2. Built a full mirror with 4 live PLCs, real firmware, synthetic load profiles.
+3. Hardened the vendor connection path — new protocol, audit logging, least-privilege.
+4. Every change now rehearses in emulator before prod. No exceptions, no 'small fixes'.

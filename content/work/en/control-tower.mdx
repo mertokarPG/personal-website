@@ -1,0 +1,39 @@
+---
+slug: control-tower
+no: "01"
+year: "2023 —"
+title: Manufacturing Control Tower
+kicker: Read-only web app, end-to-end
+desc: "Owned the full lifecycle: requirements, UI/UX, scalable architecture, front-end releases, back-end integration, cybersecurity (iRisk), and app registration. One pane of glass across SAP / Proficy / PLC / recipe data."
+tags:
+  - Architecture
+  - UI/UX
+  - Cybersecurity
+result: Single dashboard replaces 7 tabs
+role: Product owner + architect + front-end
+team: 2 devs, 1 PM, 4 stakeholders across Ops/IT/Quality
+stack:
+  - React
+  - Node
+  - SQL Server
+  - SAP PI
+  - Proficy
+  - Azure AD
+impact:
+  - ["Tabs replaced", "7 → 1"]
+  - ["Mean time to answer", "≈4 min → <20 s"]
+  - ["Cybersecurity posture", "Formal iRisk sign-off"]
+  - ["Adoption", "All 3 departments, daily"]
+learned: Factory software wins on the second week, not the first demo. If the first time an operator uses it is a training session, you've already lost them.
+---
+
+## Problem
+
+Ops teams alt-tabbed between 7 systems to answer one question: what is the line actually doing right now? Every outage turned into a forensic scavenger hunt across SAP, Proficy, recipe apps, and PLC screens.
+
+## Approach
+
+1. Workshops with operators, line leaders, and quality. Wrote down the 12 questions people asked every shift.
+2. Drew the data model around those questions, not around the source systems. Back-end aggregates; UI shows, it doesn't compute.
+3. Built it read-only on purpose. One less cybersecurity conversation, zero risk of mutating plant state.
+4. iRisk assessment + technical/environment diagrams in parallel with build so app registration was ready when we shipped.

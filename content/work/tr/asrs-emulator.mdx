@@ -1,0 +1,36 @@
+---
+slug: asrs-emulator
+no: "03"
+year: "2021—2023"
+title: ASRS Emülasyon Ortamı
+kicker: Sıfır duruşla değişiklik yönetimi
+desc: Üretimi aynalayan tam bir emülasyon ortamı tasarladım — VM'ler, veritabanları, dört canlı PLC. Böylece vendor güncellemeleri hatta dokunmadan önce offline doğrulanabildi.
+tags:
+  - PLC
+  - DevOps
+  - IT/OT
+result: "%3.5 → %0.5 operasyonel kayıp"
+role: Engineering Technology Owner
+team: 2 vendor partneri, saha IT, operasyon
+stack:
+  - Siemens PLCs
+  - VMware
+  - SQL Server
+  - Secure vendor tunnel
+impact:
+  - ["Operasyonel kayıplar", "%3.5 → %0.5"]
+  - ["Güncellemelerden kaynaklı hat duruşu", "Sıfır"]
+  - ["Güvenlik duruşu", "Adım-değişim iyileşme"]
+learned: "'Sıfır duruş'u uptime ile değil, bir prova odasıyla satın alırsın."
+---
+
+## Sorun
+
+ASRS 7/24 çalışıyordu ve vendor yazılım değişikliklerini güvenli bir şekilde test edecek bir yolu hiç olmamıştı. Her güncelleme canlı mühimmat tatbikatıydı. Kimse dokunmak istemediği için operasyonel kayıplar sinsice artıyordu.
+
+## Yaklaşım
+
+1. Her bileşeni envanterledim: VM'ler, DB'ler, PLC'ler, HMI'lar. Hepsini izole bir ağ segmentine klonladım.
+2. 4 canlı PLC, gerçek firmware ve sentetik yük profilleriyle tam bir ayna kurdum.
+3. Vendor bağlantı yolunu sağlamlaştırdım — yeni protokol, audit log, en az yetki.
+4. Artık her değişiklik önce emülatörde prova ediliyor. İstisnasız, 'ufak bir düzeltme' falan da yok.

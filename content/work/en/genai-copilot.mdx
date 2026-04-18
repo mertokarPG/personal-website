@@ -1,0 +1,35 @@
+---
+slug: genai-copilot
+no: "04"
+year: "2024 —"
+title: GenAI Operations Copilot
+kicker: Copilot Studio + plant data
+desc: MVP agent for operators and MAC teams. Integrated with Control Tower APIs to surface live line/PO info in plain English. A reusable pattern for GenAI on top of plant data.
+tags:
+  - Copilot Studio
+  - API
+  - GenAI
+result: Pattern reused by 2 sister sites
+role: Technical lead, pattern author
+team: 1 dev + me, vendor support
+stack:
+  - Microsoft Copilot Studio
+  - Control Tower REST API
+  - Azure AD
+impact:
+  - ["Sister sites adopting", "2"]
+  - ["Answer accuracy (tool-grounded)", ">95%"]
+  - ["Time to first useful answer", "Seconds"]
+learned: GenAI in industry is 10% model, 90% knowing what question is safe to answer.
+---
+
+## Problem
+
+Everyone wanted GenAI on the factory floor. Nobody had a safe, repeatable way to actually plug it into plant data without turning the LLM into a liability.
+
+## Approach
+
+1. Grounded the agent in Control Tower's read-only API — no direct PLC or MES access.
+2. Scoped prompts to narrow, verifiable questions: 'What's line 3 running?', 'When does PO 12345 finish?'.
+3. Hallucination budget: if the agent doesn't have a tool-call answer, it says so. No vibes-based factory advice.
+4. Documented the pattern so sister sites could copy the integration, not the code.

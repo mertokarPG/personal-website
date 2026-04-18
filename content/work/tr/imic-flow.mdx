@@ -1,0 +1,36 @@
+---
+slug: imic-flow
+no: "05"
+year: "2022 —"
+title: iMiC / Flow-to-Work
+kicker: PLC → MQTT → Service Bus
+desc: Çok taraflı bir connected-worker girişiminde teknik PM ve yerel mimar. PLC, MES ve Control Tower arasında veri etiketleme ve entegrasyon tasarımı — build-vs-buy dönüşünden sağ çıkan protokoller.
+tags:
+  - MQTT
+  - MES
+  - Integration
+result: Şartname 2 vendor dönüşünü sağ atlattı
+role: Teknik PM + yerel mimar
+team: Çok saha, vendor, saha IT, Ops
+stack:
+  - MQTT
+  - Site Service Bus
+  - MES
+  - PLC
+impact:
+  - ["Sağ atlatılan vendor dönüşü", "2"]
+  - ["Control Tower + MES yeniden kullanımı", "Aynı event akışı"]
+  - ["Yön değişimi sonrası yeniden iş", "Minimum"]
+learned: Kimse kod yazmadan önce sözleşmeyi yaz. Sözleşmeler, org şemalarından uzun yaşar.
+---
+
+## Sorun
+
+Operatörler sözlü bilgiyle yönetiliyordu. Hat durduğunda kimseye bildirim gelmiyordu; birisi sadece… fark ediyordu. Merkez bir connected-worker platformu istiyordu; kimse şeklinde anlaşamıyordu.
+
+## Yaklaşım
+
+1. Platformdan değil, mesajdan başladık: operatörün ne zaman, hangi bağlamda ne görmesi gerekiyor.
+2. Gerekli her PLC etiketini mapledim, sonra boruyu çizdik: PLC → MQTT → Site Service Bus → tüketiciler (MES, Control Tower, bildirimler).
+3. Entegrasyon şartnamesini kod değil, sözleşme olarak yazdık. Vendor/build yönü iki kez döndüğünde, sözleşmeler yerinde kaldı.
+4. Idempotent, replay edilebilir event'ler için direttim. Operatör tek tüketici değil — raporlama da aynı akışa ihtiyaç duyuyor.

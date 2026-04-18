@@ -1,0 +1,36 @@
+---
+slug: imic-flow
+no: "05"
+year: "2022 —"
+title: iMiC / Flow-to-Work
+kicker: PLC → MQTT → Service Bus
+desc: Technical PM and local architect on a multi-party connected-worker initiative. Data tag mapping and integration design across PLC, MES, and Control Tower — protocols that survived a build-vs-buy reversal.
+tags:
+  - MQTT
+  - MES
+  - Integration
+result: Spec outlived 2 vendor pivots
+role: Technical PM + local architect
+team: Multi-site, vendor, site IT, Ops
+stack:
+  - MQTT
+  - Site Service Bus
+  - MES
+  - PLC
+impact:
+  - ["Vendor pivots survived", "2"]
+  - ["Re-use across Control Tower + MES", "Same event stream"]
+  - ["Re-work after direction change", "Minimal"]
+learned: Write the contract before anyone writes the code. Contracts outlive org charts.
+---
+
+## Problem
+
+Operators were informed by tribal knowledge. When a line stopped, nobody got a notification; someone just… noticed. Corporate wanted a connected-worker platform; nobody agreed on the shape.
+
+## Approach
+
+1. Started from the message, not the platform: what does an operator need to see, when, with what context.
+2. Mapped every PLC tag we'd need, then drew the pipe: PLC → MQTT → Site Service Bus → consumers (MES, Control Tower, notifications).
+3. Wrote the integration spec as contracts, not code. When the vendor/build direction flipped twice, the contracts held.
+4. Pushed hard for idempotent, replayable events. Operators aren't the only consumer — reporting needs the same stream.

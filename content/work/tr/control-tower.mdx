@@ -1,0 +1,39 @@
+---
+slug: control-tower
+no: "01"
+year: "2023 —"
+title: Üretim Kontrol Kulesi
+kicker: Uçtan uca salt-okunur web uygulaması
+desc: "Tüm döngünün sahibi: gereksinimler, UI/UX, ölçeklenebilir mimari, ön yüz sürümleri, arka uç entegrasyonu, siber güvenlik (iRisk) ve uygulama kaydı. SAP / Proficy / PLC / reçete verisi üstüne tek bir cam."
+tags:
+  - Architecture
+  - UI/UX
+  - Cybersecurity
+result: Tek ekran 7 sekmenin yerini aldı
+role: Ürün sahibi + mimar + ön yüz
+team: 2 geliştirici, 1 PM, Ops/IT/Kalite'den 4 paydaş
+stack:
+  - React
+  - Node
+  - SQL Server
+  - SAP PI
+  - Proficy
+  - Azure AD
+impact:
+  - ["Yerine geçen sekme", "7 → 1"]
+  - ["Cevaba ulaşma süresi", "≈4 dk → <20 sn"]
+  - ["Siber güvenlik duruşu", "Resmi iRisk onayı"]
+  - ["Kullanım", "3 departman, her gün"]
+learned: Fabrika yazılımı ilk demoda değil, ikinci haftada kazanır. Operatör aracı ilk kez bir eğitim oturumunda açıyorsa, onu çoktan kaybetmişsindir.
+---
+
+## Sorun
+
+Ops ekipleri, hattın gerçekten ne yaptığı tek sorusunu yanıtlamak için 7 sistem arasında alt-tab yapıyordu. Her duruş, SAP, Proficy, reçete uygulamaları ve PLC ekranları arasında adli bir av partisine dönüyordu.
+
+## Yaklaşım
+
+1. Operatörler, hat liderleri ve kalite ile çalıştaylar. Her vardiyada sorulan 12 soruyu kâğıda döktük.
+2. Veri modelini kaynak sistemlere göre değil, bu sorulara göre çizdik. Arka uç toplar; UI sadece gösterir, hesaplamaz.
+3. Bilerek salt-okunur kurduk. Hem bir siber güvenlik tartışması daha az, hem de saha durumunu değiştirme riski sıfır.
+4. iRisk değerlendirmesi ve teknik/ortam diyagramları build ile paralel yürüdü; yayına çıktığımızda uygulama kaydı hazırdı.
